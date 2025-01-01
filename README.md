@@ -3,11 +3,11 @@ Research Burrows–Wheeler Transform Algorithm
 
 # Cấu trúc thư mục
 
-## `data/`
+`data/`
 - Lưu trữ toàn bộ tệp dữ liệu cần thiết (các file dạng .txt).
 - Chia thành các thư mục: `input/` và `output/`
 
-## `src/`
+`src/`
 - Chứa toàn bộ mã nguồn chính của dự án:
     - `algorithms/`: Chứa các file cài đặt cho từng thuật toán
     - `common/`: Chứa các file dùng chung.
