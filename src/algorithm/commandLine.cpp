@@ -141,6 +141,7 @@ void commandLine3(int &argc, char **&argv) {
     vector<int> positions;
 
     getline(fin, paragraph, '\0');
+    MatchPattern bwt(burrowsWheelerEncode(paragraph));
 
     while (!fin_patterns.eof()) {
         getline(fin_patterns, pattern);
@@ -151,7 +152,7 @@ void commandLine3(int &argc, char **&argv) {
         fout << patterns[i] << ": ";
 
         // ==================================================
-        positions = backwardSearch(paragraph, patterns[i]);
+        positions = backwardSearch(bwt, patterns[i]);
         // ĐẶT CODE HOẶC ĐỔI TÊN ĐỂ VÀO CHỖ NÀY NHAAAAAAAAA
         // ==================================================
 
