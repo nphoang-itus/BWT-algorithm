@@ -1,5 +1,4 @@
-#include "include\PatternSearch.hpp"
-#include "include\BWT.hpp"
+#include "../include/PatternSearch.hpp"
 
 // create cumlate array and index
 void MatchPattern::buildCumulateNIndexArray()
@@ -102,23 +101,4 @@ vector<int> backwardSearch(const MatchPattern &bwt, const string &pattern)
     }
     sort(results.begin(), results.end());
     return results;
-}
-
-int main()
-{
-    string s = "hermann looked instead of ace he saw a queen of spades before him he could not trust his eyes and now as he gazed";
-    MatchPattern bwt(burrowsWheelerEncode(s));
-    cout << "bwt: " << bwt.bwt << endl;
-    string pattern = "he";
-
-    vector<int> occurrences = backwardSearch(bwt, pattern);
-
-    cout << "Pattern \"" << pattern << "\" found at indices: ";
-    for (const int &i : occurrences)
-    {
-        cout << i << " ";
-    }
-    cout << endl;
-
-    return 0;
 }

@@ -1,9 +1,5 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <algorithm>
-#include <unordered_map>
-#include <set>
+#pragma once
+#include "BWT.hpp"
 
 using namespace std;
 

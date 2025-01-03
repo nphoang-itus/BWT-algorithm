@@ -1,5 +1,6 @@
 #include "../include/CommandLine.hpp"
 #include "../include/Compression.hpp"
+#include "../include/PatternSearch.hpp"
 
 void executeWithCommandLine(int &argc, char **&argv) {
     if (argc < 4 || argc > 5) {
@@ -150,7 +151,7 @@ void commandLine3(int &argc, char **&argv) {
         fout << patterns[i] << ": ";
 
         // ==================================================
-        // positions = searchPattern(paragraph, patterns[i]);
+        positions = backwardSearch(paragraph, patterns[i]);
         // ĐẶT CODE HOẶC ĐỔI TÊN ĐỂ VÀO CHỖ NÀY NHAAAAAAAAA
         // ==================================================
 
