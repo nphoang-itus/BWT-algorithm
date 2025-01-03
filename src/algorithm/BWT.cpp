@@ -7,7 +7,9 @@ string Rotations(string source, int distance)
 
 string burrowsWheelerEncode(string source)
 {
-    source = source + "$";
+    if (source[source.size() - 1] != '$') {
+        source = source + "$";
+    }
     vector<string> shifts;
     for (int i = 0; i < source.size(); i++)
     {

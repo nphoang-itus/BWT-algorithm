@@ -7,6 +7,7 @@
 #include <fstream>
 #include <queue>
 #include <algorithm>
+#include <cstring>
 
 using namespace std;
 
