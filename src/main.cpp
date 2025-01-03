@@ -18,6 +18,11 @@ int main(int argc, char **argv)
 
     // g++ algorithm/*.cpp main.cpp -o main.exe
     // Build
+    // Cmd1: ./main.exe -c input.txt output.txt --bwt
+    // Cmd2: ./main.exe -c input.txt output.txt
+    // Cmd3: ./main.exe -p paragraph.txt patterns.txt output.txt
+    // Cmd4: ./main.exe -cprs input.txt output.bin
+    // Cmd5: ./main.exe -decprs input.bin output.txt
     executeWithCommandLine(argc, argv);
 
     return 0;
