@@ -1,10 +1,6 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <unordered_map>
-#include <fstream>
-#include <queue>
-#include <algorithm>
+#pragma once
+#include "BWT.hpp"
+
 using namespace std;
 
 struct Node
@@ -23,12 +19,6 @@ struct Compare
         return a->fre > b->fre;
     }
 };
-
-string Rotations(string source, int distance);
-
-string burrowsWheelerEncode(string source);
-
-string burrowsWheelerDecode(string encoding);
 
 pair<string, vector<Node *>> runLengthEncode(const string &bwt);
 
