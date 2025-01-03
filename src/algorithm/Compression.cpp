@@ -126,7 +126,7 @@ void decompressFile(const string &input, const string &output)
     if (!fin.is_open())
     {
         cerr << "Can not open file" << endl;
-        return;
+        exit(false);
     }
 
     string huffmanEncoded;

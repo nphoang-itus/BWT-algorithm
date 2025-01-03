@@ -1,4 +1,5 @@
 #include "../include/PatternSearch.hpp"
+#include "../include/BWT.hpp"
 
 // create cumlate array and index
 void MatchPattern::buildCumulateNIndexArray()
@@ -72,27 +73,23 @@ void MatchPattern::buildSuffixArr()
         index = lfMap[index];
     }
 }
+
 vector<int> backwardSearch(const MatchPattern &bwt, const string &pattern)
 {
     int n = bwt.bwt.size();
 
-    // Initialize search range
     int start = 0, end = n - 1;
 
-    // Process the pattern from end to start
     for (int i = pattern.size() - 1; i >= 0; --i)
     {
         char c = pattern[i];
-        cout << "check 1 " << bwt.occ[c][0] << " a " << bwt.occ[c][end + 1] << endl;
-        if (bwt.occ[c][start] == bwt.occ[c][end + 1])
+        if (bwt.occ[bwt.index[c]][start] == bwt.occ[bwt.index[c]][end + 1])
         {
             return {}; // Pattern not found
         }
-        cout << "check 2 " << bwt.cumulate[c] << endl;
-        start = bwt.cumulate[c] + bwt.occ[c][start];
-        end = bwt.cumulate[c] + bwt.occ[c][end + 1] - 1;
+        start = bwt.cumulate[bwt.index[c]] + bwt.occ[bwt.index[c]][start];
+        end = bwt.cumulate[bwt.index[c]] + bwt.occ[bwt.index[c]][end + 1] - 1;
     }
-    cout << "check " << endl;
 
     vector<int> results;
     for (int i = start; i <= end; i++)

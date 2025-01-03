@@ -1,2 +1,3 @@
-Tong Duong Thai Hoa
-banana
+fox: 16
+the: 31
+o: 12, 17, 26, 41
