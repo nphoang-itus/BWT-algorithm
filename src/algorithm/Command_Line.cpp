@@ -150,11 +150,8 @@ void commandLine3(int &argc, char **&argv) {
 
     for (int i = 0; i < patterns.size(); i++) {
         fout << patterns[i] << ": ";
-
-        // ==================================================
+        
         positions = backwardSearch(bwt, patterns[i]);
-        // ĐẶT CODE HOẶC ĐỔI TÊN ĐỂ VÀO CHỖ NÀY NHAAAAAAAAA
-        // ==================================================
 
         for (int j = 0; j < positions.size(); j++) {
             fout << positions[j];
