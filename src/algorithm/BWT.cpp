@@ -1,26 +1,48 @@
 #include "../include/BWT.hpp"
 
-string Rotations(string source, int distance)
-{
-    return source.substr(distance, string::npos) + source.substr(0, distance);
+vector<int> suffixArray(const string& s) {
+    int n = s.size();
+    vector<int> suffixArray(n);
+    vector<int> rank(n), tempRank(n);
+    
+    for (int i = 0; i < n; i++) {
+        suffixArray[i] = i;
+        rank[i] = s[i];
+    }
+    
+    for (int step = 1; step < n; step *= 2) {
+        auto compare = [&rank, step, n](int i, int j) {
+            if (rank[i] != rank[j]) return rank[i] < rank[j];
+            int ri = i + step < n ? rank[i + step] : -1;
+            int rj = j + step < n ? rank[j + step] : -1;
+            return ri < rj;
+        };
+        
+        sort(suffixArray.begin(), suffixArray.end(), compare);
+        
+        tempRank[suffixArray[0]] = 0;
+        for (int i = 1; i < n; i++) {
+            tempRank[suffixArray[i]] = tempRank[suffixArray[i - 1]] + (compare(suffixArray[i - 1], suffixArray[i]) ? 1 : 0);
+        }
+        rank = tempRank;
+    }
+
+    return suffixArray;
 }
 
-string burrowsWheelerEncode(string source)
-{
+string burrowsWheelerEncode(string source) {
     if (source[source.size() - 1] != '$') {
         source = source + "$";
     }
-    vector<string> shifts;
-    for (int i = 0; i < source.size(); i++)
-    {
-        shifts.push_back(Rotations(source, i));
-    }
-    sort(shifts.begin(), shifts.end());
+    
+    int n = source.size();
+    
+    vector<int> sa = suffixArray(source);
 
     string encoding = "";
-    for (const string &shift : shifts)
-    {
-        encoding += shift.back();
+    for (int i = 0; i < n; i++) {
+        int prev = (sa[i] == 0) ? n - 1 : sa[i] - 1;
+        encoding += source[prev];
     }
 
     return encoding;
